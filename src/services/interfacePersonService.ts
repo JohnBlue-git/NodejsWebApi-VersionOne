@@ -1,3 +1,4 @@
+import Person from '../models/person/person';
 
 abstract class IPersonService {
   // Constructor to prevent instantiation of this class
@@ -8,9 +9,9 @@ abstract class IPersonService {
   }
 
   // Methods that must be implemented by any derived class
-  abstract getAllPersons(): Promise<any[]>; // Adjust the return type as necessary
-  abstract createPerson(data: { name: string; age: number }): Promise<any>; // Adjust type of 'data'
-  abstract getPersonById(id: number): Promise<any>; // Adjust return type as necessary
+  abstract getAllPersons(): Promise<Person[]>;
+  abstract createPerson(newPerson: Person): Promise<void>;
+  abstract getPersonById(id: number): Promise<Person | undefined>;
   abstract deletePersonById(id: number): Promise<boolean>;
   abstract deletePersons(): Promise<void>;
 }

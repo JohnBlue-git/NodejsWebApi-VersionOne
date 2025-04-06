@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import PersonController from '../../controllers/person/personController';
 import AdvancePersonService from '../../services/advance_person/advancePersonService';
+import RoutesUtils from '../routes_utils';
 
 const router = express.Router();
 
@@ -14,7 +15,10 @@ router.get('/', (req: Request, res: Response) => advancePersonController.getAllP
 
 // GET by id
 router.get('/:id', (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = RoutesUtils.getValidId(req, res);
+  if (typeof id === 'undefined') {
+    return;
+  }
   advancePersonController.getPersonById(req, res, id);
 });
 
@@ -23,13 +27,19 @@ router.post('/', (req: Request, res: Response) => advancePersonController.create
 
 // PATCH by id
 router.patch('/:id', (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = RoutesUtils.getValidId(req, res);
+  if (typeof id === 'undefined') {
+    return;
+  }
   advancePersonController.patchPersonById(req, res, id);
 });
 
 // DELETE by id
 router.delete('/:id', (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = RoutesUtils.getValidId(req, res);
+  if (typeof id === 'undefined') {
+    return;
+  }
   advancePersonController.deletePersonById(req, res, id);
 });
 

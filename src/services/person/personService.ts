@@ -1,5 +1,5 @@
-import Person from '../../models/person/person'; // Assuming you have a proper Person class defined
-import IPersonService from '../interfacePersonService'; // Assuming you have an interface `IPersonService`
+import Person from '../../models/person/person';
+import IPersonService from '../interfacePersonService';
 
 interface PersonData {
   name: string;
@@ -7,7 +7,7 @@ interface PersonData {
 }
 
 class PersonService extends IPersonService {
-  private persons: Person[]; // Define the type for the persons array
+  private persons: Person[];
 
   constructor() {
     super();
@@ -28,10 +28,8 @@ class PersonService extends IPersonService {
   }
 
   // Create a new person
-  async createPerson(data: PersonData): Promise<Person> {
-    const newPerson = new Person(data.name, data.age);
+  async createPerson(newPerson: Person): Promise<void> {
     this.persons.push(newPerson);
-    return newPerson;
   }
 
   // Delete a person by ID

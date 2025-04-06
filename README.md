@@ -55,16 +55,6 @@ The structure is organized similarly to your C++ project, and it also includes c
 ### Composition Relationship
 ![composition relationship](doc/webapi_project.png)
 
-## Tips for git
-```console
-git status
-git add .
-git reset node-web-api/
-git status
-git commit -m "<message>"
-git push
-```
-
 ## How to buid and run
 
 ### Pre-installation
@@ -85,9 +75,6 @@ git push
         - supertest: A testing utility for making HTTP requests in tests.
         - engines: Specifies the minimum required version of Node.js to run the project.
 ```console
-# to folder
-mkdir node-web-api && cd node-web-api
-
 # install
 npm init -y
 npm install
@@ -100,9 +87,9 @@ npm install @types/express --save-dev
 ### Run program
 ```console
 # Run server
-node ../server.js
+npm run dev
 # or
-npm start
+...
 
 # Run test (if have test writtern in .js)
 npm test

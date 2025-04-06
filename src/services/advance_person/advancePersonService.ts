@@ -28,10 +28,8 @@ class AdvancePersonService extends IPersonService {
   }
 
   // Create a new person
-  async createPerson(data: PersonData): Promise<Person> {
-    const newPerson = new Person(data.name, data.age);
+  async createPerson(newPerson: Person): Promise<void> {
     this.persons.push(newPerson);
-    return newPerson;
   }
 
   // Delete a person by ID

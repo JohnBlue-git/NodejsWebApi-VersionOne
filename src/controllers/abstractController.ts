@@ -14,10 +14,10 @@ abstract class AbstractController {
 
   // Abstract methods that must be implemented by subclasses
   abstract getAllPersons(req: Request, res: Response): Promise<void>;
-  abstract getPersonById(req: Request, res: Response, id: string): Promise<void>;
+  abstract getPersonById(req: Request, res: Response, id: number): Promise<void>;
   abstract createPerson(req: Request, res: Response): Promise<void>;
-  abstract patchPersonById(req: Request, res: Response, id: string): Promise<void>;
-  abstract deletePersonById(req: Request, res: Response, id: string): Promise<void>;
+  abstract patchPersonById(req: Request, res: Response, id: number): Promise<void>;
+  abstract deletePersonById(req: Request, res: Response, id: number): Promise<void>;
   abstract deletePersons(req: Request, res: Response): Promise<void>;
 }
 

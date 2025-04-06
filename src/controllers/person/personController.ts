@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import AbstractController from '../abstractController';
 import PersonSerializer from '../../serializers/person/personSerializer';
-import PersonService from '../../services/person/personService';
+import IPersonService from '../../services/interfacePersonService';
 
 class PersonController extends AbstractController {
-  private personService: PersonService;
+  private personService: IPersonService;
 
-  constructor(service: PersonService) {
+  constructor(service: IPersonService) {
     super(); // Call the constructor of AbstractController
     this.personService = service; // Store the provided service class
   }
@@ -23,7 +23,7 @@ class PersonController extends AbstractController {
   }
 
   // Get a person by id
-  async getPersonById(req: Request, res: Response, id: string): Promise<void> {
+  async getPersonById(req: Request, res: Response, id: number): Promise<void> {
     try {
       const person = await this.personService.getPersonById(id);
       if (person === undefined) {
@@ -50,7 +50,7 @@ class PersonController extends AbstractController {
   }
 
   // Update person by id
-  async patchPersonById(req: Request, res: Response, id: string): Promise<void> {
+  async patchPersonById(req: Request, res: Response, id: number): Promise<void> {
     try {
       const person = await this.personService.getPersonById(id);
       if (person === undefined) {
@@ -71,7 +71,7 @@ class PersonController extends AbstractController {
   }
 
   // Delete person by id
-  async deletePersonById(req: Request, res: Response, id: string): Promise<void> {
+  async deletePersonById(req: Request, res: Response, id: number): Promise<void> {
     try {
       const check = await this.personService.deletePersonById(id);
       if (check === true) {
