@@ -14,7 +14,8 @@
     "noImplicitAny": true  // Ensure that variables are explicitly typed
   },
   "include": [
-    "src/**/*"  // Include all TypeScript files in the 'src' directory
+    "src/**/*",  // Include all TypeScript files in the 'src' directory
+    "tests/**/*.ts" // ... in the 'tests' directory
   ],
   "exclude": [
     "node_modules",  // Exclude 'node_modules' folder

@@ -86,6 +86,9 @@ npm install axios express body-parser supertest
 
 # install the TypeScript type definitions for Express.
 npm install @types/express --save-dev
+
+# install Typscript type support for jtest
+npm install ts-jest --save-dev
 ```
 
 ### Run program
