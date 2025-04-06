@@ -1,0 +1,48 @@
+# Node.js dependencies
+/node_modules/
+
+# Build directories
+/dist/
+/build/
+
+# TypeScript cache
+/.tsbuildinfo
+
+# Logs
+*.log
+*.log.*
+
+# npm package lock file (optional but recommended to ignore in some cases)
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE directories and settings
+.idea/
+.vscode/
+
+# Temporary files
+*.bak
+*.swp
+*.swo
+
+# Coverage reports
+/coverage/
+
+# npm debug log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Ignore test results if you don't want them in Git
+/tests/test-results/
+
+# Optional: Ignore build artifacts and dist output if you don't want them in Git
+/dist/
