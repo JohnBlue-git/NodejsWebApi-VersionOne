@@ -41,7 +41,7 @@ The structure is organized similarly to your C++ project, and it also includes c
 │   ├── interfacePersonService.js
 │   └── person
 │       └── personService.js
-└── tests
+└── tests-pytests
     ├── README.md
     ├── __pycache__
     │   ├── test_api_advance_person.cpython-312-pytest-8.3.5.pyc
@@ -58,7 +58,7 @@ The structure is organized similarly to your C++ project, and it also includes c
 ## How to buid and run
 
 ### Pre-installation
-- Releation: package.json.
+- Configuration: package.json.
 - Explanation:
     - name: The name of the project.
     - version: The version of the project.
@@ -74,10 +74,14 @@ The structure is organized similarly to your C++ project, and it also includes c
         - jest: A testing framework used for running unit and integration tests.
         - supertest: A testing utility for making HTTP requests in tests.
         - engines: Specifies the minimum required version of Node.js to run the project.
+
+### Install dependency command
 ```console
 # install
 npm init -y
 npm install
+
+# install specific dependency
 npm install express body-parser supertest
 
 # install the TypeScript type definitions for Express.
@@ -85,17 +89,55 @@ npm install @types/express --save-dev
 ```
 
 ### Run program
+Based on the package.json
+```json
+"scripts": {
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "test": "jest"
+}
+```
+Run in development mode (Using ts-node)
+- ts-node is a tool that lets you run TypeScript code on the fly. (Easy debugging with TypeScript)
+- In development mode, you typically want to run your TypeScript code directly, without needing to compile it manually each time.
 ```console
-# Run server
 npm run dev
-# or
-...
+```
+Production Mode (Compiling TypeScript to JavaScript)
+- In production mode, it's better to compile TypeScript to JavaScript first and then run the compiled JavaScript files. This is because running TypeScript on the fly in production can be slower and less efficient.
+```console
+# build
+npm run build
 
-# Run test (if have test writtern in .js)
-npm test
+# run
+npm start
+```
+Besides (in dev mode), it's also recommended to use **nodemon** to automatically restart the server on file changes.
+```console
+# To install nodemon
+npm install --save-dev nodemon
+
+# Notice that we shall modify the dev script in package.json
+# "dev": "nodemon -r ts-node/register src/server.ts"
 ```
 
 ## Tests
+
+### Test via jtest
+Based on the package.json
+```json
+"scripts": {
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "test": "jest"
+}
+```
+Command
+```console
+npm test
+```
 
 ### Test via pytest
 We have provide e2e tests via python scripts \

@@ -29,18 +29,10 @@ Easy debugging with TypeScript.
 
 Fast iteration because you don't need to compile the code first.
 
-It's recommended to use nodemon (optional) to automatically restart the server on file changes.
 
-To install nodemon, you can run:
 
-bash
-複製
-npm install --save-dev nodemon
-Then, modify the dev script in package.json:
 
-json
-複製
-"dev": "nodemon -r ts-node/register src/server.ts"
+
 2. Production Mode (Compiling TypeScript to JavaScript)
 In production mode, it's better to compile TypeScript to JavaScript first and then run the compiled JavaScript files. This is because running TypeScript on the fly in production can be slower and less efficient.
 
