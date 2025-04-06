@@ -7,43 +7,45 @@ interface PersonData {
 }
 
 class AdvancePersonService extends IPersonService {
-  private persons: Person[]; // Define the type for the persons array
+  private num_instances: number;
+  private persons: Map<number, Person>;
 
   constructor() {
     super();
-    this.persons = [];
+    this.num_instances = 0;
+    this.persons = new Map();
   }
 
   // Get all persons
   async getAllPersons(): Promise<Person[]> {
-    return this.persons;
+    return Array.from(this.persons.values());
   }
 
   // Get a person by ID
   async getPersonById(id: number): Promise<Person | undefined> {
-    if (id + 1 > this.persons.length) {
+    if (!this.persons.has(id)) {
       return undefined;
     }
-    return this.persons[id];
+    return this.persons.get(id);
   }
 
   // Create a new person
   async createPerson(newPerson: Person): Promise<void> {
-    this.persons.push(newPerson);
+    this.persons.set(this.num_instances++, newPerson);
   }
 
   // Delete a person by ID
   async deletePersonById(id: number): Promise<boolean> {
-    if (id + 1 > this.persons.length) {
+    if (!this.persons.has(id)) {
       return false;
     }
-    this.persons.splice(id, 1);
+    this.persons.delete(id);
     return true;
   }
 
   // Delete all persons
   async deletePersons(): Promise<void> {
-    this.persons = [];
+    this.persons.clear();
   }
 }
 
