@@ -82,7 +82,7 @@ npm init -y
 npm install
 
 # install specific dependency
-npm install express body-parser supertest
+npm install axios express body-parser supertest
 
 # install the TypeScript type definitions for Express.
 npm install @types/express --save-dev
@@ -142,7 +142,7 @@ npm test
 ### Test via pytest
 We have provide e2e tests via python scripts \
 (please refer to the follwing README.md and navigate to tests folder) \
-[tests/README.md](tests/README.md)
+[tests-pytests/README.md](tests/README.md)
 
 ### Test via curl:
 ```console
