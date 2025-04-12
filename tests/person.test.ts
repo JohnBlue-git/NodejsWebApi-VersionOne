@@ -22,6 +22,8 @@ afterAll((done) => {
   });
 });
 
+jest.setTimeout(3000); // Set global timeout to 3 seconds
+
 describe('Person API Tests', () => {
 
   test('POST /api/person', async () => {
@@ -30,25 +32,29 @@ describe('Person API Tests', () => {
       headers: { 'Content-Type': 'application/json' }
     });
     expect(response.status).toBe(201);
-  }, 1);  // First test
+  });  // First test
 
   test('GET /api/person', async () => {
     const response: AxiosResponse = await axios.get(`${BASE_URL}${PERSON_API}`);
     expect(response.status).toBe(200);
-  }, 2);  // Second test
+  });  // Second test
 
   test('GET /api/person/0', async () => {
     const response: AxiosResponse = await axios.get(`${BASE_URL}${PERSON_API}/0`);
     expect(response.status).toBe(200);
-  }, 3);  // Third test
-/*
+  });  // Third test
+
   test('GET /api/person/42 should return 404', async () => {
     try {
       await axios.get(`${BASE_URL}${PERSON_API}/42`);
     } catch (error) {
-      expect(error.response.status).toBe(404);
+      if (axios.isAxiosError(error) && error.response) {
+        expect(error.response.status).toBe(404);
+      } else {
+        throw error; // re-throw if it's an unexpected error
+      }
     }
-  }, 4);  // Fourth test
+  });  // Fourth test
 
   test('PATCH /api/person/0', async () => {
     const payload = { name: 'John Blue', age: 18 };
@@ -56,19 +62,23 @@ describe('Person API Tests', () => {
       headers: { 'Content-Type': 'application/json' }
     });
     expect(response.status).toBe(200);
-  }, 5);  // Fifth test
+  });  // Fifth test
 
   test('DELETE /api/person/0', async () => {
     const response: AxiosResponse = await axios.delete(`${BASE_URL}${PERSON_API}/0`);
     expect(response.status).toBe(204);
-  }, 6);  // Sixth test
+  });  // Sixth test
 
   test('GET /42 should return 404', async () => {
     try {
       await axios.get(`${BASE_URL}/42`);
     } catch (error) {
-      expect(error.response.status).toBe(404);
+      if (axios.isAxiosError(error) && error.response) {
+        expect(error.response.status).toBe(404);
+      } else {
+        throw error; // re-throw if it's an unexpected error
+      }
     }
-  }, 7);  // Seventh test
-*/
+  });  // Seventh test
+
 });
