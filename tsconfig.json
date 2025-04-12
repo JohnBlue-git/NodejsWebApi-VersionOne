@@ -3,7 +3,7 @@
     "target": "ES6",  // Compile to ES6 for modern JavaScript features
     "module": "CommonJS",  // Use CommonJS module system
     "outDir": "./dist",  // Output directory for compiled JavaScript
-    "rootDir": "./src",  // Root directory for source TypeScript files
+    "rootDir": "./",  // Root directory for source TypeScript files
     "esModuleInterop": true,  // Enable default import syntax with non-ESM modules
     "skipLibCheck": true,  // Skip library checks for faster builds
     "forceConsistentCasingInFileNames": true,  // Ensure consistent casing of filenames
