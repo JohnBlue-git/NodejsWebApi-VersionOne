@@ -32,7 +32,8 @@
         "transform": {
             "^.+\\.ts$": "ts-jest"
         },
-        "testEnvironment": "node"
+        "testEnvironment": "node",
+        "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"]
     },
     "directories": {
         "doc": "doc",

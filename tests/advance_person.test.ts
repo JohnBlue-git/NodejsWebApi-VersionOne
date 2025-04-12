@@ -5,7 +5,7 @@ import http from 'http';
 
 let server: Server;
 const BASE_URL = 'http://localhost:1999';
-const PERSON_API = '/api/person';
+const PERSON_API = '/api/advance_person';
 
 /* The following have been replaced by jest.setup.ts
 
