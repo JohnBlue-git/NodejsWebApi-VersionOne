@@ -1,7 +1,26 @@
 import axios, { AxiosResponse } from 'axios';
+import { Server } from 'http';
+import app from '../src/app'; // your Express app
+import http from 'http';
 
+let server: Server;
 const BASE_URL = 'http://localhost:1999';
 const PERSON_API = '/api/person';
+
+beforeAll((done) => {
+  server = http.createServer(app);
+  server.listen(1999, () => {
+    console.log('Test server running on http://localhost:1999');
+    done();
+  });
+});
+
+afterAll((done) => {
+  server.close(() => {
+    console.log('Test server closed');
+    done();
+  });
+});
 
 describe('Person API Tests', () => {
 
