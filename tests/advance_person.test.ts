@@ -34,7 +34,7 @@ beforeAll(async () => {
 
 describe('Person API Tests', () => {
 
-  test('POST /api/person', async () => {
+  test('POST /api/advance_person', async () => {
     const payload = { name: 'John Doe', age: 30 };
     const response: AxiosResponse = await axios.post(`${BASE_URL}${PERSON_API}`, payload, {
       headers: { 'Content-Type': 'application/json' }
@@ -42,17 +42,17 @@ describe('Person API Tests', () => {
     expect(response.status).toBe(201);
   });  // First test
 
-  test('GET /api/person', async () => {
+  test('GET /api/advance_person', async () => {
     const response: AxiosResponse = await axios.get(`${BASE_URL}${PERSON_API}`);
     expect(response.status).toBe(200);
   });  // Second test
 
-  test('GET /api/person/0', async () => {
+  test('GET /api/advance_person/0', async () => {
     const response: AxiosResponse = await axios.get(`${BASE_URL}${PERSON_API}/0`);
     expect(response.status).toBe(200);
   });  // Third test
 
-  test('GET /api/person/42 should return 404', async () => {
+  test('GET /api/advance_person/42 should return 404', async () => {
     try {
       await axios.get(`${BASE_URL}${PERSON_API}/42`);
     } catch (error) {
@@ -64,7 +64,7 @@ describe('Person API Tests', () => {
     }
   });  // Fourth test
 
-  test('PATCH /api/person/0', async () => {
+  test('PATCH /api/advance_person/0', async () => {
     const payload = { name: 'John Blue', age: 18 };
     const response: AxiosResponse = await axios.patch(`${BASE_URL}${PERSON_API}/0`, payload, {
       headers: { 'Content-Type': 'application/json' }
@@ -72,7 +72,7 @@ describe('Person API Tests', () => {
     expect(response.status).toBe(200);
   });  // Fifth test
 
-  test('DELETE /api/person/0', async () => {
+  test('DELETE /api/advance_person/0', async () => {
     const response: AxiosResponse = await axios.delete(`${BASE_URL}${PERSON_API}/0`);
     expect(response.status).toBe(204);
   });  // Sixth test
